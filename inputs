@@ -1,0 +1,10 @@
+nt = 51       // Number of time steps
+nx = 21       // Number of nodes
+dt = 0.01     // Time step
+k = 0.1     // Diffusion coefficient
+x0 = 0.0      // Inlet boundary location
+xf = 2.0      // Outlet boundary location
+x00 = 0.5      // Inlet boundary location
+xff = 1.0      // Outlet boundary location
+bcl = 1.0     // Inlet boundary condition
+bcr = 1.0     // Outlet boundary condition
