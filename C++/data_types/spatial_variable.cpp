@@ -15,6 +15,12 @@ namespace cfd
 SpatialDiscretizationMethod SpatialVariable::GetSpatialDiscretizationMethod()
 {
     return spatial_discretization_method_;
-};
+}
+
+void SpatialVariable::SetSpatialDiscretizationMethod(
+    SpatialDiscretizationMethod spatial_discretization_method)
+{
+    spatial_discretization_method_ = spatial_discretization_method;
+}
 
 }  // namespace cfd

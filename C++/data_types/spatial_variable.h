@@ -22,10 +22,13 @@ enum SpatialDiscretizationMethod
 class SpatialVariable
 {
   public:
+    void SetSpatialDiscretizationMethod(
+        SpatialDiscretizationMethod spatial_discretization_method);
     SpatialDiscretizationMethod GetSpatialDiscretizationMethod();
 
   private:
-    SpatialDiscretizationMethod spatial_discretization_method_{};
+    SpatialDiscretizationMethod spatial_discretization_method_{
+        SpatialDiscretizationMethod::kFiniteDifferenceMethod};
 };
 
 #endif
