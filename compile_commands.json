@@ -1,0 +1,34 @@
+[
+  {
+    "file": "C++/data_types/spatial_variable.cpp",
+    "arguments": [
+      "/usr/bin/g++",
+      "-U_FORTIFY_SOURCE",
+      "-fstack-protector",
+      "-Wall",
+      "-Wunused-but-set-parameter",
+      "-Wno-free-nonheap-object",
+      "-fno-omit-frame-pointer",
+      "-std=c++0x",
+      "-MD",
+      "-MF",
+      "bazel-out/k8-fastbuild/bin/C++/data_types/_objs/spatial_variable/spatial_variable.pic.d",
+      "-frandom-seed=bazel-out/k8-fastbuild/bin/C++/data_types/_objs/spatial_variable/spatial_variable.pic.o",
+      "-fPIC",
+      "-iquote",
+      ".",
+      "-iquote",
+      "bazel-out/k8-fastbuild/bin",
+      "-std=c++17",
+      "-Wno-builtin-macro-redefined",
+      "-D__DATE__=\"redacted\"",
+      "-D__TIMESTAMP__=\"redacted\"",
+      "-D__TIME__=\"redacted\"",
+      "-c",
+      "C++/data_types/spatial_variable.cpp",
+      "-o",
+      "bazel-out/k8-fastbuild/bin/C++/data_types/_objs/spatial_variable/spatial_variable.pic.o"
+    ],
+    "directory": "/home/aevalenc/Documents/Coding/C++/CFD/12-Steps-To-NS"
+  }
+]
