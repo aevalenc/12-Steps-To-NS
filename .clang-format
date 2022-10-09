@@ -1,0 +1,5 @@
+BasedOnStyle: Google
+AccessModifierOffset: -2
+AllowAllParametersOfDeclarationOnNextLine: false
+IndentWidth: 4
+BreakBeforeBraces: Allman
