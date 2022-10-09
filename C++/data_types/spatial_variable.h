@@ -31,6 +31,6 @@ class SpatialVariable
         SpatialDiscretizationMethod::kFiniteDifferenceMethod};
 };
 
-#endif
-
 }  // namespace cfd
+
+#endif
