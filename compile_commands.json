@@ -1,6 +1,5 @@
 [
   {
-    "file": "C++/data_types/spatial_variable.cpp",
     "arguments": [
       "/usr/bin/g++",
       "-U_FORTIFY_SOURCE",
@@ -29,6 +28,6 @@
       "-o",
       "bazel-out/k8-fastbuild/bin/C++/data_types/_objs/spatial_variable/spatial_variable.pic.o"
     ],
-    "directory": "/home/aevalenc/Documents/Coding/C++/CFD/12-Steps-To-NS"
+    "directory": "12-Steps-To-NS"
   }
 ]
