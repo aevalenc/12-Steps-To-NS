@@ -22,15 +22,20 @@ enum SpatialDiscretizationMethod
 class SpatialVariable
 {
   public:
+    SpatialVariable()
+        : spatial_discretization_method_{
+              SpatialDiscretizationMethod::kFiniteDifferenceMethod}
+    {
+    }
+
     void SetSpatialDiscretizationMethod(
         SpatialDiscretizationMethod spatial_discretization_method);
-    SpatialDiscretizationMethod GetSpatialDiscretizationMethod();
+    SpatialDiscretizationMethod GetSpatialDiscretizationMethod() const;
 
   private:
-    SpatialDiscretizationMethod spatial_discretization_method_{
-        SpatialDiscretizationMethod::kFiniteDifferenceMethod};
+    SpatialDiscretizationMethod spatial_discretization_method_;
 };
 
 }  // namespace cfd
 
-#endif
+#endif  // SPATIAL_VARIABLE_H

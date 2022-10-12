@@ -13,6 +13,7 @@ namespace cfd
 {
 
 SpatialDiscretizationMethod SpatialVariable::GetSpatialDiscretizationMethod()
+    const
 {
     return spatial_discretization_method_;
 }
