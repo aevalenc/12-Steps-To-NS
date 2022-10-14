@@ -6,13 +6,15 @@
  *
  */
 
-#ifndef SPATIAL_VARIABLE_H
-#define SPATIAL_VARIABLE_H
+#include <vector>
+
+#ifndef CXX_DATA_TYPES_SPATIAL_VARIABLE_H
+#define CXX_DATA_TYPES_SPATIAL_VARIABLE_H
 
 namespace cfd
 {
 
-enum SpatialDiscretizationMethod
+enum class SpatialDiscretizationMethod
 {
     kFiniteDifferenceMethod,
     kFiniteVolumeMethod,
@@ -28,14 +30,28 @@ class SpatialVariable
     {
     }
 
+    ~SpatialVariable() {}
+    SpatialVariable(const SpatialVariable& other)
+        : spatial_discretization_method_(other.spatial_discretization_method_),
+          dummy_vector_(other.dummy_vector_){};
+    SpatialVariable(SpatialVariable&& other)
+        : spatial_discretization_method_(other.spatial_discretization_method_),
+          dummy_vector_(other.dummy_vector_){};
+    SpatialVariable& operator=(const SpatialVariable& other)
+    {
+        return *this = SpatialVariable(other);
+    }
+    SpatialVariable& operator=(SpatialVariable&&) { return *this; }
+
     void SetSpatialDiscretizationMethod(
         SpatialDiscretizationMethod spatial_discretization_method);
     SpatialDiscretizationMethod GetSpatialDiscretizationMethod() const;
 
   private:
     SpatialDiscretizationMethod spatial_discretization_method_;
+    std::vector<double> dummy_vector_{};
 };
 
 }  // namespace cfd
 
-#endif  // SPATIAL_VARIABLE_H
+#endif  // CXX_DATA_TYPES_SPATIAL_VARIABLE_H
