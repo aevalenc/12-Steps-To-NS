@@ -9,9 +9,11 @@
  **
  ************************************************************************/
 
+#include "C++/data_types/grid.h"
+
 #include <gtest/gtest.h>
 
-#include "C++/data_types/spatial_variable.h"
+#include "C++/data_types/grid_generator.h"
 
 namespace cfd
 {
@@ -20,12 +22,11 @@ namespace geometry
 namespace
 {
 
-TEST(BaseClassTests,
-     GivenDefaultInstantiation_ExpectDefaultSpatialDiscretizationMethod)
+TEST(OneDimensionLinearGridTests, GivenValidStartAndEnd_ExpectValidGrid)
 {
-    const SpatialVariable u;
-    const auto result = u.GetSpatialDiscretizationMethod();
-    EXPECT_TRUE(result == SpatialDiscretizationMethod::kFiniteDifferenceMethod);
+    GridGenerator grid_generator{};
+    const auto result = grid_generator.Create1DLinearGrid(11, 0.0, 1.0);
+    EXPECT_EQ(result.GetSize(), 11);
 }
 
 }  // namespace
