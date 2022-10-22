@@ -31,6 +31,7 @@ Grid GridGenerator::Create1DLinearGrid(const std::uint64_t& size,
     grid.SetDimension(1);
 
     return grid;
+    // comment for clang-tidy check
 }
 
 }  // namespace geometry
