@@ -19,14 +19,14 @@ enum class SpatialDiscretizationMethod
     kFiniteDifferenceMethod,
     kFiniteVolumeMethod,
     kFiniteElementMethod,
+    kInvalid,
 };
 
 class SpatialVariable
 {
   public:
     SpatialVariable()
-        : spatial_discretization_method_{
-              SpatialDiscretizationMethod::kFiniteDifferenceMethod}
+        : spatial_discretization_method_{SpatialDiscretizationMethod::kInvalid}
     {
     }
 
