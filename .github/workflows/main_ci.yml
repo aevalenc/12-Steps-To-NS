@@ -5,7 +5,7 @@ name: CI
 # Controls when the workflow will run
 on:
   # Allows you to run this workflow manually from the Actions tab
-  [push, pull_request]
+  [pull_request]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -20,7 +20,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
       - uses: bazelbuild/setup-bazelisk@v1
-      - run: bazel build --copt='-std=c++14' //...
+      - run: bazel build --copt='-std=c++17' //...
 
   bazel-test:
     if: contains(github.event.pull_request.labels.*.name, 'check')
@@ -33,7 +33,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
       - uses: bazelbuild/setup-bazelisk@v1
-      - run: bazel test --copt='-std=c++14' --cache_test_results=no --test_output=all //...
+      - run: bazel test --copt='-std=c++17' --cache_test_results=no --test_output=all //...
 
   cpp-lint:
     if: contains(github.event.pull_request.labels.*.name, 'check')
@@ -46,9 +46,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           style: file
+          tidy-checks: ""
+          extra-args: "-std=c++17"
 
       - name: Fail fast?!
         if: steps.linter.outputs.checks-failed > 0
-        run: |
-          echo "Some files failed the linting checks!"
-          exit 1
+        # run: echo "Some files failed the linting checks!"
+        run: exit 1
