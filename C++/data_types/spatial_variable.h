@@ -35,10 +35,10 @@ class SpatialVariable
     ~SpatialVariable() {}
     SpatialVariable(const SpatialVariable& other)
         : spatial_discretization_method_(other.spatial_discretization_method_),
-          dummy_vector_(other.dummy_vector_){};
+          discretized_variable_(other.discretized_variable_){};
     SpatialVariable(SpatialVariable&& other)
         : spatial_discretization_method_(other.spatial_discretization_method_),
-          dummy_vector_(other.dummy_vector_){};
+          discretized_variable_(other.discretized_variable_){};
     SpatialVariable& operator=(const SpatialVariable& other)
     {
         return *this = SpatialVariable(other);
@@ -48,13 +48,17 @@ class SpatialVariable
     void SetSpatialDiscretizationMethod(
         SpatialDiscretizationMethod spatial_discretization_method);
     SpatialDiscretizationMethod GetSpatialDiscretizationMethod() const;
+    std::vector<double>& GetDiscretizedVariable()
+    {
+        return discretized_variable_;
+    };
 
     void SetGrid(const cfd::geometry::Grid& grid);
 
   private:
     SpatialDiscretizationMethod spatial_discretization_method_;
-    std::vector<double> dummy_vector_{};
-    cfd::geometry::Grid grid_;
+    std::vector<double> discretized_variable_{};
+    geometry::Grid spatial_grid_{};
 };
 
 }  // namespace cfd

@@ -24,6 +24,9 @@ void SpatialVariable::SetSpatialDiscretizationMethod(
     spatial_discretization_method_ = spatial_discretization_method;
 }
 
-void SpatialVariable::SetGrid(const cfd::geometry::Grid& grid) { grid_ = grid; }
+void SpatialVariable::SetGrid(const cfd::geometry::Grid& grid)
+{
+    spatial_grid_ = grid;
+}
 
 }  // namespace cfd
