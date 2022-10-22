@@ -6,6 +6,9 @@
 
 #include "C++/data_types/grid.h"
 
+#ifndef CXX_DATA_TYPES_GRID_GENERATOR_H
+#define CXX_DATA_TYPES_GRID_GENERATOR_H
+
 namespace cfd
 {
 
@@ -26,3 +29,5 @@ class GridGenerator
 }  // namespace geometry
 
 }  // namespace cfd
+
+#endif  // CXX_DATA_TYPES_GRID_GENERATOR_H
