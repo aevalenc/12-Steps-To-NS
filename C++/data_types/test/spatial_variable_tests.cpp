@@ -19,45 +19,47 @@ namespace cfd
 namespace
 {
 
-TEST(BaseClassTests,
-     GivenDefaultInstantiation_ExpectDefaultSpatialDiscretizationMethod)
+class BaseClassFixture : public testing::Test
 {
-    const SpatialVariable u;
-    const auto result = u.GetSpatialDiscretizationMethod();
-    EXPECT_TRUE(result == SpatialDiscretizationMethod::kFiniteDifferenceMethod);
+  protected:
+    SpatialVariable u_{};
+};
+
+TEST_F(BaseClassFixture,
+       GivenDefaultInstantiation_ExpectDefaultSpatialDiscretizationMethod)
+{
+    const auto result = u_.GetSpatialDiscretizationMethod();
+    EXPECT_TRUE(result == SpatialDiscretizationMethod::kInvalid);
 }
 
-TEST(BaseClassTests,
-     GivenDefaultInstantiation_WhenSettingDiscretizationMethod_ExpectValid)
+TEST_F(BaseClassFixture,
+       GivenDefaultInstantiation_WhenSettingDiscretizationMethod_ExpectValid)
 {
-    SpatialVariable u;
-    u.SetSpatialDiscretizationMethod(
+    u_.SetSpatialDiscretizationMethod(
         SpatialDiscretizationMethod::kFiniteElementMethod);
-    EXPECT_TRUE(u.GetSpatialDiscretizationMethod() ==
+    EXPECT_TRUE(u_.GetSpatialDiscretizationMethod() ==
                 SpatialDiscretizationMethod::kFiniteElementMethod);
 }
 
-TEST(
-    BaseClassTests,
+TEST_F(
+    BaseClassFixture,
     GivenFiniteElementDiscretization_WhenCopiedConstructed_ExpectFiniteElementSpatialDiscretization)
 {
-    SpatialVariable u1;
-    u1.SetSpatialDiscretizationMethod(
+    u_.SetSpatialDiscretizationMethod(
         SpatialDiscretizationMethod::kFiniteElementMethod);
-    const SpatialVariable u2(u1);
-    EXPECT_TRUE(u1.GetSpatialDiscretizationMethod() ==
+    const SpatialVariable u2(u_);
+    EXPECT_TRUE(u_.GetSpatialDiscretizationMethod() ==
                 u2.GetSpatialDiscretizationMethod());
 }
 
-TEST(
-    BaseClassTests,
+TEST_F(
+    BaseClassFixture,
     GivenFiniteElementDiscretization_WhenCopiedAssigned_ExpectFiniteElementSpatialDiscretization)
 {
-    SpatialVariable u1;
-    u1.SetSpatialDiscretizationMethod(
+    u_.SetSpatialDiscretizationMethod(
         SpatialDiscretizationMethod::kFiniteElementMethod);
-    const auto u2 = u1;
-    EXPECT_TRUE(u1.GetSpatialDiscretizationMethod() ==
+    const auto u2 = u_;
+    EXPECT_TRUE(u_.GetSpatialDiscretizationMethod() ==
                 u2.GetSpatialDiscretizationMethod());
 }
 
