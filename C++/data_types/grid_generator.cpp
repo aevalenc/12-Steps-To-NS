@@ -18,21 +18,19 @@ Grid GridGenerator::Create1DLinearGrid(const std::uint64_t& size,
                                        const double& start, const double& end)
 {
     std::vector<Element> elements{};
+    const auto step_size = static_cast<std::uint64_t>(end - start) / size;
+
     for (std::uint64_t idx = 0; idx < size; ++idx)
     {
-        if (idx != 0)
-        {
-            const auto step_size =
-                static_cast<std::uint64_t>(end - start) / size;
-
-            Node start_node{static_cast<double>(idx + step_size)};
-            Node end_node{static_cast<double>((idx + step_size) + step_size)};
-
-            elements.push_back(std::vector<Node>{start_node, end_node});
-        }
+        Node start_node{static_cast<double>(idx)};
+        Node end_node{static_cast<double>((idx + step_size))};
+        elements.push_back(std::vector<Node>{start_node, end_node});
     }
 
-    return Grid{elements};
+    Grid grid{elements};
+    grid.SetDimension(1);
+
+    return grid;
 }
 
 }  // namespace geometry
