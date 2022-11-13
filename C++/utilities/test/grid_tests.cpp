@@ -7,7 +7,7 @@
 #include <gtest/gtest.h>
 
 #include "C++/data_types/grid.h"
-#include "C++/data_types/grid_generator.h"
+#include "C++/utilities/grid_generator.h"
 
 namespace cfd
 {

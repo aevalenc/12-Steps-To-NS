@@ -12,11 +12,3 @@ cc_library(
     hdrs = ["grid.h"],
     visibility = ["//C++:__subpackages__"],
 )
-
-cc_library(
-    name = "grid_generator",
-    srcs = ["grid_generator.cpp"],
-    hdrs = ["grid_generator.h"],
-    visibility = ["//C++:__subpackages__"],
-    deps = [":grid"],
-)
