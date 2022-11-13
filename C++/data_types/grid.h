@@ -28,12 +28,12 @@ enum class FiniteElementOrder
 class Node
 {
   public:
-    Node();
-    ~Node();
-    Node(const Node& other);
-    Node(Node&& other);
-    Node& operator=(const Node& other);
-    Node& operator=(Node&& other);
+    // Node();
+    // ~Node();
+    // Node(const Node& other);
+    // Node(Node&& other);
+    // Node& operator=(const Node& other);
+    // Node& operator=(Node&& other);
 
   private:
     double x_{};
