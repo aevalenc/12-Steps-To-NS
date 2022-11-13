@@ -1,0 +1,13 @@
+{
+  "name": "step_1",
+  "grid": {
+    "import": false,
+    "dimension": 1,
+    "x_start": 0.0,
+    "x_end": 1.0,
+    "size": 11
+  },
+  "spatial_inputs": {
+    "discretization_method": 0
+  }
+}
