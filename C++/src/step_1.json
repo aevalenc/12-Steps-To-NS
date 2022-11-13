@@ -9,5 +9,8 @@
   },
   "spatial_inputs": {
     "discretization_method": 0
+  },
+  "time_inputs": {
+    "discretization_method": 0
   }
 }
