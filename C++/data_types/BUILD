@@ -3,6 +3,7 @@ cc_library(
     srcs = ["spatial_variable.cpp"],
     hdrs = ["spatial_variable.h"],
     visibility = ["//C++:__subpackages__"],
+    deps = ["//C++/data_types:grid"],
 )
 
 cc_library(
