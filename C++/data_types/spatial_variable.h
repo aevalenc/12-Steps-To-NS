@@ -8,6 +8,8 @@
 
 #include <vector>
 
+#include "C++/data_types/grid.h"
+
 #ifndef CXX_DATA_TYPES_SPATIAL_VARIABLE_H
 #define CXX_DATA_TYPES_SPATIAL_VARIABLE_H
 
@@ -47,9 +49,12 @@ class SpatialVariable
         SpatialDiscretizationMethod spatial_discretization_method);
     SpatialDiscretizationMethod GetSpatialDiscretizationMethod() const;
 
+    void SetGrid(const cfd::geometry::Grid& grid);
+
   private:
     SpatialDiscretizationMethod spatial_discretization_method_;
     std::vector<double> dummy_vector_{};
+    cfd::geometry::Grid grid_;
 };
 
 }  // namespace cfd
