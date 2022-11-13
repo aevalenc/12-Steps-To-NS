@@ -6,6 +6,12 @@ http_archive(
     urls = ["https://github.com/google/googletest/archive/609281088cfefc76f9d0ce82e1ff6c30cc3591e5.zip"],
 )
 
+http_archive(
+    name = "nlohmann_json",
+    strip_prefix = "json-17d9eacd248f58b73f4d1be518ef649fe2295642",
+    urls = ["https://github.com/nlohmann/json/archive/17d9eacd248f58b73f4d1be518ef649fe2295642.zip"],
+)
+
 # Hedron's Compile Commands Extractor for Bazel
 # https://github.com/hedronvision/bazel-compile-commands-extractor
 http_archive(
