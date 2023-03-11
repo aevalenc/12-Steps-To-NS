@@ -3,9 +3,8 @@
 /// Update: 13 November, 2022
 ///
 
-#include <gtest/gtest.h>
-
 #include <fstream>
+#include <gtest/gtest.h>
 #include <nlohmann/json.hpp>
 #include <optional>
 
@@ -15,8 +14,7 @@ namespace
 TEST(JsonTestBaseFixture, TestImportOfThirdPartyRepo)
 {
     // Given
-    std::optional<std::ifstream> input_file_(
-        "third-party/test/json_test_input.json");
+    std::optional<std::ifstream> input_file_("third_party/test/json_test_input.json");
     const std::string name("json_test_input");
 
     // Assert
