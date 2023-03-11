@@ -68,12 +68,12 @@ class Grid
     Grid(std::vector<Element> elements) : elements_(elements){};
 
   public:
-    std::uint8_t GetDimension() const { return dimension_; };
-    void SetDimension(const std::uint8_t& dimension)
-    {
-        dimension_ = dimension;
-    };
+    std::uint8_t GetDimension() const { return dimension_; }
+    void SetDimension(const std::uint8_t& dimension) { dimension_ = dimension; }
     std::uint64_t GetSize() const;
+
+    std::vector<Element> GetElementsMutable() { return elements_; }
+    const std::vector<Element>& GetElements() { return elements_; }
 
   private:
     std::vector<Element> elements_{};

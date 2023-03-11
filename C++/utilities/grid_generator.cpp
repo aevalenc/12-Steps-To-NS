@@ -18,13 +18,15 @@ Grid GridGenerator::Create1DLinearGrid(const std::uint64_t& size,
                                        const double& start, const double& end)
 {
     std::vector<Element> elements{};
-    const auto step_size = static_cast<std::uint64_t>(end - start) / size;
+    const auto step_size = (end - start) / size;
 
+    auto current_point = start;
     for (std::uint64_t idx = 0; idx < size; ++idx)
     {
-        Node start_node{static_cast<double>(idx)};
-        Node end_node{static_cast<double>((idx + step_size))};
+        Node start_node{current_point};
+        Node end_node{current_point + step_size};
         elements.push_back(std::vector<Node>{start_node, end_node});
+        current_point += step_size;
     }
 
     Grid grid{elements};
