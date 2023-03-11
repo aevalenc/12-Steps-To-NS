@@ -7,6 +7,7 @@
  */
 
 #include <cstdint>
+#include <optional>
 #include <vector>
 
 #ifndef CXX_DATA_TYPES_GRID_H
@@ -38,10 +39,13 @@ class Node
     // Node& operator=(const Node& other);
     // Node& operator=(Node&& other);
 
+  public:
+    const std::vector<std::optional<double>> GetValues() const;
+
   private:
-    double x_{};
-    double y_{};
-    double z_{};
+    std::optional<double> x_{std::nullopt};
+    std::optional<double> y_{std::nullopt};
+    std::optional<double> z_{std::nullopt};
 };
 
 class Element
@@ -51,7 +55,8 @@ class Element
   public:
     Element(){};
     Element(ElementEntity nodes) : nodes_(nodes){};
-    Element GetElement() const { return nodes_; };
+
+    ElementEntity GetElement() const { return nodes_; };
     std::uint8_t GetDimension() const { return dimension_; };
     FiniteElementOrder GetOrder() const { return order_; };
 
@@ -72,8 +77,8 @@ class Grid
     void SetDimension(const std::uint8_t& dimension) { dimension_ = dimension; }
     std::uint64_t GetSize() const;
 
-    std::vector<Element> GetElementsMutable() { return elements_; }
-    const std::vector<Element>& GetElements() { return elements_; }
+    std::vector<Element> GetElementsMutable() const { return elements_; }
+    const std::vector<Element>& GetElements() const { return elements_; }
 
   private:
     std::vector<Element> elements_{};
