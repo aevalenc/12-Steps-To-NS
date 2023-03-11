@@ -4,10 +4,9 @@
 /// Update: 20 November, 2021
 ///
 
-#include <gtest/gtest.h>
-
 #include "C++/data_types/grid.h"
 #include "C++/utilities/grid_generator.h"
+#include <gtest/gtest.h>
 
 namespace cfd
 {
@@ -29,11 +28,15 @@ TEST(OneDimensionLinearGridTests, GivenValidStartAndEnd_ExpectValidGrid)
 
     // Call
     const auto result = grid_generator.Create1DLinearGrid(size, start, end);
+    const auto first_node = result.GetElements().at(0).GetElement().front();
+    const auto first_node_x_value = first_node.GetValues().front();
+
+    ASSERT_TRUE(first_node_x_value.has_value());
 
     // Expect
     EXPECT_EQ(result.GetSize(), 11);
     EXPECT_EQ(result.GetDimension(), 1);
-    EXPECT_NEAR(2.3, 3.4, tolerance);
+    EXPECT_NEAR(*first_node_x_value, 0.0, tolerance);
 }
 
 }  // namespace
