@@ -12,3 +12,11 @@ cc_library(
     hdrs = ["grid.h"],
     visibility = ["//C++:__subpackages__"],
 )
+
+cc_library(
+    name = "time_variable",
+    srcs = ["time_variable.cpp"],
+    hdrs = ["time_variable.h"],
+    visibility = ["//C++:__subpackages__"],
+    deps = [":spatial_variable"],
+)
