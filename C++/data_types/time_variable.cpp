@@ -8,7 +8,6 @@
  */
 
 #include "C++/data_types/time_variable.h"
-
 #include <cassert>
 #include <iterator>
 
@@ -27,8 +26,7 @@ TimeDiscretizationMethod TimeVariable::GetTimeDiscretizationMethod() const
     return time_discretization_method_;
 }
 
-void TimeVariable::SetTimeDiscretizationMethod(
-    TimeDiscretizationMethod time_discretization_method)
+void TimeVariable::SetTimeDiscretizationMethod(TimeDiscretizationMethod time_discretization_method)
 {
     time_discretization_method_ = time_discretization_method;
 }
@@ -38,8 +36,7 @@ void TimeVariable::Step(const std::vector<double>& wave_speeds)
     assert(start_time_ != end_time_);
     assert(delta_t_ != 0.0);
 
-    const auto number_of_steps =
-        static_cast<std::size_t>((end_time_ - start_time_) / delta_t_);
+    const auto number_of_steps = static_cast<std::size_t>((end_time_ - start_time_) / delta_t_);
 
     if (time_discretization_method_ == TimeDiscretizationMethod::kEulerStep)
     {
