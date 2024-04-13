@@ -2,20 +2,22 @@ load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 http_archive(
     name = "com_google_googletest",
+    sha256 = "6e85b4467b6fe974ba7b6f2556654ef18f794ed7c73c06c1bfaefe5aa8561f6b",
     strip_prefix = "googletest-391ce627def20c1e8a54d10b12949b15086473dd",
     urls = ["https://github.com/google/googletest/archive/391ce627def20c1e8a54d10b12949b15086473dd.zip"],
 )
 
 http_archive(
     name = "nlohmann_json",
-    strip_prefix = "json-bbe337c3a30d5f6eea418b4aee399525536de37a",
-    urls = ["https://github.com/nlohmann/json/archive/bbe337c3a30d5f6eea418b4aee399525536de37a.zip"],
+    sha256 = "a22461d13119ac5c78f205d3df1db13403e58ce1bb1794edc9313677313f4a9d",
+    url = "https://github.com/nlohmann/json/releases/download/v3.11.3/include.zip",
 )
 
 # Hedron's Compile Commands Extractor for Bazel
 # https://github.com/hedronvision/bazel-compile-commands-extractor
 http_archive(
     name = "hedron_compile_commands",
+    sha256 = "10b5f7a36252ce0dd3396c289ba0138779adb6436c187266f6a93de505f3434f",
     strip_prefix = "bazel-compile-commands-extractor-07c307ab34d458cf0a4187a15ce1f6a2b72c408c",
 
     # Replace the commit hash in both places (below) with the latest, rather than using the stale one here.
