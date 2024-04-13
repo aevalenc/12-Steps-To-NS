@@ -12,18 +12,19 @@
 namespace cfd
 {
 
-SpatialDiscretizationMethod SpatialVariable::GetSpatialDiscretizationMethod()
-    const
+SpatialDiscretizationMethod SpatialVariable::GetSpatialDiscretizationMethod() const
 {
     return spatial_discretization_method_;
 }
 
-void SpatialVariable::SetSpatialDiscretizationMethod(
-    SpatialDiscretizationMethod spatial_discretization_method)
+void SpatialVariable::SetSpatialDiscretizationMethod(SpatialDiscretizationMethod spatial_discretization_method)
 {
     spatial_discretization_method_ = spatial_discretization_method;
 }
 
-void SpatialVariable::SetGrid(const cfd::geometry::Grid& grid) { grid_ = grid; }
+void SpatialVariable::SetGrid(const cfd::geometry::Grid& grid)
+{
+    spatial_grid_ = grid;
+}
 
 }  // namespace cfd
