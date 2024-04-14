@@ -43,6 +43,7 @@ class SpatialVariable
     std::vector<double>& GetDiscretizedVariable() { return discretized_variable_; };
 
     void SetGrid(const cfd::geometry::Grid& grid);
+    geometry::Grid GetGrid() const;
 
   private:
     SpatialDiscretizationMethod spatial_discretization_method_;

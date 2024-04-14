@@ -27,4 +27,9 @@ void SpatialVariable::SetGrid(const cfd::geometry::Grid& grid)
     spatial_grid_ = grid;
 }
 
+geometry::Grid SpatialVariable::GetGrid() const
+{
+    return spatial_grid_;
+}
+
 }  // namespace cfd
