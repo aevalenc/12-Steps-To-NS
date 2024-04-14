@@ -79,6 +79,7 @@ class Grid
 
     std::vector<Element> GetElementsMutable() const { return elements_; }
     const std::vector<Element>& GetElements() const { return elements_; }
+    std::int32_t number_of_boundaries{};
 
   private:
     std::vector<Element> elements_{};
