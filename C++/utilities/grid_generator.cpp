@@ -5,7 +5,6 @@
 ///
 
 #include "C++/utilities/grid_generator.h"
-
 #include "C++/data_types/grid.h"
 
 namespace cfd
@@ -14,8 +13,7 @@ namespace cfd
 namespace geometry
 {
 
-Grid GridGenerator::Create1DLinearGrid(const std::uint64_t& size,
-                                       const double& start, const double& end)
+Grid GridGenerator::Create1DLinearGrid(const std::uint64_t& size, const double& start, const double& end)
 {
     std::vector<Element> elements{};
     const auto step_size = (end - start) / size;
@@ -31,6 +29,7 @@ Grid GridGenerator::Create1DLinearGrid(const std::uint64_t& size,
 
     Grid grid{elements};
     grid.SetDimension(1);
+    grid.number_of_boundaries = 2;
 
     return grid;
     // comment for clang-tidy check
