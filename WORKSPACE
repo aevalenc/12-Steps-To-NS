@@ -13,6 +13,12 @@ http_archive(
     url = "https://github.com/nlohmann/json/releases/download/v3.11.3/include.zip",
 )
 
+http_archive(
+    name = "numerical_methods",
+    strip_prefix = "Numerical-Methods-master",
+    url = "https://github.com/aevalenc/Numerical-Methods/archive/refs/heads/master.tar.gz",
+)
+
 # Hedron's Compile Commands Extractor for Bazel
 # https://github.com/hedronvision/bazel-compile-commands-extractor
 http_archive(
