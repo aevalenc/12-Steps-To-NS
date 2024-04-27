@@ -22,6 +22,11 @@ Grid GridGenerator::Create1DLinearGrid(const std::uint64_t& size, const double& 
     for (std::uint64_t idx = 0; idx < size; ++idx)
     {
         Node start_node{current_point};
+        if (idx == 0 || idx == (size - 1))
+        {
+            start_node.SetBoundaryBoolean(true);
+        }
+
         Node end_node{current_point + step_size};
         elements.push_back(std::vector<Node>{start_node, end_node});
         current_point += step_size;
@@ -29,7 +34,7 @@ Grid GridGenerator::Create1DLinearGrid(const std::uint64_t& size, const double& 
 
     Grid grid{elements};
     grid.SetDimension(1);
-    grid.number_of_boundaries = 2;
+    grid.number_of_boundaries_ = 2;
 
     return grid;
     // comment for clang-tidy check
