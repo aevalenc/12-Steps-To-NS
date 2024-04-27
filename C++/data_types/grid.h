@@ -41,8 +41,11 @@ class Node
 
   public:
     const std::vector<std::optional<double>> GetValues() const;
+    const bool IsOnBoundary() const;
+    void SetBoundaryBoolean(const bool is_on_boundary);
 
   private:
+    bool is_on_boundary_{false};
     std::optional<double> x_{std::nullopt};
     std::optional<double> y_{std::nullopt};
     std::optional<double> z_{std::nullopt};
@@ -59,11 +62,14 @@ class Element
     ElementEntity GetElement() const { return nodes_; };
     std::uint8_t GetDimension() const { return dimension_; };
     FiniteElementOrder GetOrder() const { return order_; };
+    const bool IsOnBoundary() const;
+    void SetBoundaryBoolean(const bool is_on_boundary);
 
   private:
     ElementEntity nodes_{};
     std::uint8_t dimension_{};
     FiniteElementOrder order_{};
+    bool is_on_boundary_{false};
 };
 
 class Grid
@@ -79,7 +85,7 @@ class Grid
 
     std::vector<Element> GetElementsMutable() const { return elements_; }
     const std::vector<Element>& GetElements() const { return elements_; }
-    std::int32_t number_of_boundaries{};
+    std::int32_t number_of_boundaries_{};
 
   private:
     std::vector<Element> elements_{};
