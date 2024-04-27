@@ -31,14 +31,14 @@ class BaseClassFixture : public testing::Test
         const geometry::Grid grid_ =
             grid_generator_.Create1DLinearGrid(number_of_grid_nodes_, initial_point_x_value_, end_point_x_value_);
         u_.SetGrid(grid_);
-        operators::LaplaceOperator nabla(u_);
-        nabla_ = std::move(nabla);
+        operators::LaplaceOperator delta(u_);
+        delta_ = std::move(delta);
     }
 
   protected:
     SpatialVariable u_{};
     geometry::GridGenerator grid_generator_{};
-    operators::LaplaceOperator nabla_;
+    operators::LaplaceOperator delta_;
 
   public:
     std::uint64_t number_of_grid_nodes_{5};
@@ -51,8 +51,9 @@ class BaseClassFixture : public testing::Test
 
 TEST_F(BaseClassFixture, GivenValidSetup_ExpectCorrectMatrixGeneration)
 {
-    const auto result = nabla_.GenerateMatrix();
-    EXPECT_NEAR(result.at(0).at(0), -1.0, tolerance_);
+    const auto result = delta_.GenerateMatrix();
+    nm::matrix::PrintMatrix(result);
+    EXPECT_NEAR(result.at(0).at(0), 2.0, tolerance_);
 }
 
 }  // namespace
