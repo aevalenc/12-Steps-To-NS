@@ -24,7 +24,6 @@ class LaplaceOperator
 {
   public:
     const nm::matrix::Matrix<double> GenerateMatrix();
-    void SetDirichletBoundaryCondition(const double value, std::string_view& boundary_name);
     void SetSpatialVariable(const SpatialVariable& u_in);
 
   public:

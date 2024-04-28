@@ -3,7 +3,11 @@ cc_library(
     srcs = ["spatial_variable.cpp"],
     hdrs = ["spatial_variable.h"],
     visibility = ["//C++:__subpackages__"],
-    deps = ["//C++/data_types:grid"],
+    deps = [
+        "//C++/data_types:grid",
+        "@numerical_methods//matrix_solvers:utilities",
+        "@numerical_methods//matrix_solvers/iterative_solvers:jacobi_method",
+    ],
 )
 
 cc_library(
