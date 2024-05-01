@@ -1,0 +1,11 @@
+cc_test(
+    name = "laplace_operator_tests",
+    srcs = ["laplace_operator_tests.cpp"],
+    deps = [
+        "//C++/data_types:grid",
+        "//C++/data_types:spatial_variable",
+        "//C++/operators:laplace",
+        "//C++/utilities:grid_generator",
+        "@com_google_googletest//:gtest_main",
+    ],
+)
