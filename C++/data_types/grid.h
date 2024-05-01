@@ -10,8 +10,8 @@
 #include <optional>
 #include <vector>
 
-#ifndef CXX_DATA_TYPES_GRID_H
-#define CXX_DATA_TYPES_GRID_H
+#ifndef C___DATA_TYPES_GRID_H
+#define C___DATA_TYPES_GRID_H
 
 namespace cfd
 {
@@ -96,4 +96,4 @@ class Grid
 
 }  // namespace cfd
 
-#endif  // CXX_DATA_TYPES_GRID_H
+#endif  // C___DATA_TYPES_GRID_H

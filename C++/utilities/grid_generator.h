@@ -6,8 +6,8 @@
 
 #include "C++/data_types/grid.h"
 
-#ifndef CXX_DATA_TYPES_GRID_GENERATOR_H
-#define CXX_DATA_TYPES_GRID_GENERATOR_H
+#ifndef C___UTILITIES_GRID_GENERATOR_H
+#define C___UTILITIES_GRID_GENERATOR_H
 
 namespace cfd
 {
@@ -19,8 +19,7 @@ class GridGenerator
 {
   public:
     Grid GetGrid() { return grid_; };
-    Grid Create1DLinearGrid(const std::uint64_t& size, const double& start,
-                            const double& end);
+    Grid Create1DLinearGrid(const std::uint64_t& size, const double& start, const double& end);
 
   private:
     Grid grid_{};
@@ -30,4 +29,4 @@ class GridGenerator
 
 }  // namespace cfd
 
-#endif  // CXX_DATA_TYPES_GRID_GENERATOR_H
+#endif  // C___UTILITIES_GRID_GENERATOR_H

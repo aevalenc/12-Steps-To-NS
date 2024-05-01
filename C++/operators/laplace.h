@@ -11,8 +11,8 @@
 #include <memory>
 #include <vector>
 
-#ifndef CXX_OPERATORS_LAPLACE_H
-#define CXX_OPERATORS_LAPLACE_H
+#ifndef C___OPERATORS_LAPLACE_H
+#define C___OPERATORS_LAPLACE_H
 
 namespace cfd
 {
@@ -41,4 +41,4 @@ class LaplaceOperator
 
 }  // namespace cfd
 
-#endif  // CXX_OPERATORS_LAPLACE_H
+#endif  // C___OPERATORS_LAPLACE_H
