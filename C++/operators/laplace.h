@@ -24,6 +24,7 @@ class LaplaceOperator
 {
   public:
     const nm::matrix::Matrix<double> GenerateMatrix();
+    void GenerateMatrixForSpatialVariable(SpatialVariable& u);
     void SetSpatialVariable(const SpatialVariable& u_in);
 
   public:

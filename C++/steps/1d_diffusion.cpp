@@ -24,8 +24,6 @@ class BaseClassFixture : public testing::Test
         const geometry::Grid grid_ =
             grid_generator_.Create1DLinearGrid(number_of_grid_nodes_, initial_point_x_value_, end_point_x_value_);
         u_.SetGrid(grid_);
-        operators::LaplaceOperator delta(u_);
-        delta_ = std::move(delta);
     }
 
   protected:
@@ -45,14 +43,14 @@ class BaseClassFixture : public testing::Test
 TEST_F(BaseClassFixture, GivenValidSetup_ExpectCorrectMatrixGeneration)
 {
     // Given
-    const auto K = delta_.GenerateMatrix();
-    u_.SetStiffnessMatrix(K);
+    operators::LaplaceOperator delta{};
+    delta.GenerateMatrixForSpatialVariable(u_);
 
     u_.SetDirichletBoundaryCondition(left_boundary_condition_, 0);
     u_.SetDirichletBoundaryCondition(right_boundary_condition_, u_.GetGrid().GetSize() - 1);
+    u_.SetMatrixSolver(MatrixSolverEnum::kJacobi);
 
     // Call
-    u_.SetMatrixSolver(MatrixSolverEnum::kJacobi);
     u_.Solve(1000, 0.001);
 
     nm::matrix::PrintVector(u_.GetDiscretizedVariable());
