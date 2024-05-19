@@ -5,7 +5,7 @@
  */
 
 #include "C++/operators/laplace.h"
-#include <algorithm>
+#include <iostream>
 #include <vector>
 
 namespace cfd
