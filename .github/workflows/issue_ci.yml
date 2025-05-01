@@ -1,0 +1,58 @@
+# Issue based CI jobs
+
+name: Issue-CI
+
+on: issue_comment
+
+jobs:
+  bazel-build-on-issue-is-a-pr:
+    # This job only runs for pull request comments
+    name: Build from PR comment if issue is a PR
+    if: ${{ github.event.issue.pull_request }}
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+      - uses: bazelbuild/setup-bazelisk@v1
+      - run: bazel build --cxxopt="-std=c++17" //...
+
+  bazel-build-on-issue-check-label:
+    # This job only runs for pull request comments
+    name: Build from PR comment with check label
+    if: contains(github.event.issue.labels.*.name, 'check')
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+      - uses: bazelbuild/setup-bazelisk@v1
+      - run: bazel build --cxxopt="-std=c++17" //...
+
+  bazel-build-on-issue-recheck:
+    # This job only runs for pull request comments
+    name: Build from PR commented with recheck
+    if: contains(github.event.comment.body, 'recheck')
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - name: PR information
+        id: pr_data
+        uses: octokit/request-action@v2.0.0
+        with:
+          route: ${{ github.event.issue.pull_request.url }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+        with:
+          repository: ${{fromJson(steps.pr_data.outputs.data).head.repo.full_name}}
+          ref: ${{fromJson(steps.pr_data.outputs.data).head.ref}}
+      - uses: bazelbuild/setup-bazelisk@v1
+      - run: bazel build --cxxopt="-std=c++17" //...

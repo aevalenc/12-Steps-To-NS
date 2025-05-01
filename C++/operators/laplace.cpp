@@ -67,8 +67,6 @@ void LaplaceOperator::GenerateMatrixForSpatialVariable(SpatialVariable& u)
     nm::matrix::Matrix<double> output_matrix{};
     const std::vector<double> matrix_entries{-1.0, 2.0, -1.0};
 
-    int lol{};
-
     const auto n = static_cast<std::int32_t>(matrix_size_ - u.GetGrid().number_of_boundaries_);
 
     output_matrix.resize(n);
