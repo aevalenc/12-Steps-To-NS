@@ -9,9 +9,8 @@
  **
  ************************************************************************/
 
-#include <gtest/gtest.h>
-
 #include "C++/data_types/spatial_variable.h"
+#include <gtest/gtest.h>
 
 namespace cfd
 {
@@ -25,42 +24,31 @@ class BaseClassFixture : public testing::Test
     SpatialVariable u_{};
 };
 
-TEST_F(BaseClassFixture,
-       GivenDefaultInstantiation_ExpectDefaultSpatialDiscretizationMethod)
+TEST_F(BaseClassFixture, GivenDefaultInstantiation_ExpectDefaultSpatialDiscretizationMethod)
 {
     const auto result = u_.GetSpatialDiscretizationMethod();
     EXPECT_TRUE(result == SpatialDiscretizationMethod::kInvalid);
 }
 
+TEST_F(BaseClassFixture, GivenDefaultInstantiation_WhenSettingDiscretizationMethod_ExpectValid)
+{
+    u_.SetSpatialDiscretizationMethod(SpatialDiscretizationMethod::kFiniteElementMethod);
+    EXPECT_TRUE(u_.GetSpatialDiscretizationMethod() == SpatialDiscretizationMethod::kFiniteElementMethod);
+}
+
 TEST_F(BaseClassFixture,
-       GivenDefaultInstantiation_WhenSettingDiscretizationMethod_ExpectValid)
+       GivenFiniteElementDiscretization_WhenCopiedConstructed_ExpectFiniteElementSpatialDiscretization)
 {
-    u_.SetSpatialDiscretizationMethod(
-        SpatialDiscretizationMethod::kFiniteElementMethod);
-    EXPECT_TRUE(u_.GetSpatialDiscretizationMethod() ==
-                SpatialDiscretizationMethod::kFiniteElementMethod);
-}
-
-TEST_F(
-    BaseClassFixture,
-    GivenFiniteElementDiscretization_WhenCopiedConstructed_ExpectFiniteElementSpatialDiscretization)
-{
-    u_.SetSpatialDiscretizationMethod(
-        SpatialDiscretizationMethod::kFiniteElementMethod);
+    u_.SetSpatialDiscretizationMethod(SpatialDiscretizationMethod::kFiniteElementMethod);
     const SpatialVariable u2(u_);
-    EXPECT_TRUE(u_.GetSpatialDiscretizationMethod() ==
-                u2.GetSpatialDiscretizationMethod());
+    EXPECT_TRUE(u_.GetSpatialDiscretizationMethod() == u2.GetSpatialDiscretizationMethod());
 }
 
-TEST_F(
-    BaseClassFixture,
-    GivenFiniteElementDiscretization_WhenCopiedAssigned_ExpectFiniteElementSpatialDiscretization)
+TEST_F(BaseClassFixture, GivenFiniteElementDiscretization_WhenCopiedAssigned_ExpectFiniteElementSpatialDiscretization)
 {
-    u_.SetSpatialDiscretizationMethod(
-        SpatialDiscretizationMethod::kFiniteElementMethod);
+    u_.SetSpatialDiscretizationMethod(SpatialDiscretizationMethod::kFiniteElementMethod);
     const auto u2 = u_;
-    EXPECT_TRUE(u_.GetSpatialDiscretizationMethod() ==
-                u2.GetSpatialDiscretizationMethod());
+    EXPECT_TRUE(u_.GetSpatialDiscretizationMethod() == u2.GetSpatialDiscretizationMethod());
 }
 
 }  // namespace
