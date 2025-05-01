@@ -37,11 +37,3 @@ cc_library(
         "@numerical_methods//matrix_solvers/iterative_solvers:jacobi_method",
     ],
 )
-
-cc_library(
-    name = "time_variable",
-    srcs = ["time_variable.cpp"],
-    hdrs = ["time_variable.h"],
-    visibility = ["//C++:__subpackages__"],
-    deps = [":spatial_variable"],
-)
