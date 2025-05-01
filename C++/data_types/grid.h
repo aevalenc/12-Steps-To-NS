@@ -8,6 +8,7 @@
 
 #include <cstdint>
 #include <optional>
+#include <ostream>
 #include <vector>
 
 #ifndef C___DATA_TYPES_GRID_H
@@ -58,6 +59,29 @@ class Element
   public:
     Element(){};
     Element(ElementEntity nodes) : nodes_(nodes){};
+    friend std::ostream& operator<<(std::ostream& os, const Element& element)
+    {
+        os << "Element: [";
+        for (size_t i = 0; i < element.nodes_.size(); ++i)
+        {
+            const auto& node = element.nodes_[i].GetValues();
+            os << "{";
+            for (size_t j = 0; j < node.size(); ++j)
+            {
+                if (node[j].has_value())
+                    os << node[j].value();
+                else
+                    os << "null";
+                if (j < node.size() - 1)
+                    os << ", ";
+            }
+            os << "}";
+            if (i < element.nodes_.size() - 1)
+                os << ", ";
+        }
+        os << "]";
+        return os;
+    }
 
     ElementEntity GetElement() const { return nodes_; };
     std::uint8_t GetDimension() const { return dimension_; };
