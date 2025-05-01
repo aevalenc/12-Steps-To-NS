@@ -7,6 +7,7 @@
  */
 
 #include "C++/data_types/discretization_methods.h"
+#include "C++/data_types/finite_difference_schemas.h"
 #include "C++/data_types/grid.h"
 #include "external/numerical_methods/matrix_solvers/utilities.h"
 #include <vector>
@@ -76,6 +77,10 @@ class SpatialVariable
   public:
     void SetSpatialDiscretizationMethod(SpatialDiscretizationMethod spatial_discretization_method);
     SpatialDiscretizationMethod GetSpatialDiscretizationMethod() const;
+
+    void SetDiscretizationSchema(FiniteDifferenceSchema discretization_schema);
+    FiniteDifferenceSchema GetDiscretizationSchema() const { return discretization_schema_; };
+
     std::vector<double>& GetDiscretizedVariable() { return discretized_variable_; };
 
     void SetGrid(const cfd::geometry::Grid& grid);
@@ -93,6 +98,7 @@ class SpatialVariable
 
   private:
     SpatialDiscretizationMethod spatial_discretization_method_{};
+    FiniteDifferenceSchema discretization_schema_{};
     std::vector<double> discretized_variable_{};
     nm::matrix::Matrix<double> K_{};
     std::vector<double> f_{};
