@@ -6,7 +6,7 @@ cc_library(
     name = "laplace",
     srcs = ["laplace.cpp"],
     hdrs = ["laplace.h"],
-    visibility = ["//C++:__subpackages__"],
+    visibility = ["//CXX:__subpackages__"],
     deps = [
         "//CXX/data_types:spatial_variable",
         "@numerical_methods//matrix_solvers:utilities",
@@ -17,7 +17,7 @@ cc_library(
     name = "gradient",
     srcs = ["gradient.cpp"],
     hdrs = ["gradient.h"],
-    visibility = ["//C++:__subpackages__"],
+    visibility = ["//CXX:__subpackages__"],
     deps = [
         "//CXX/data_types:spatial_variable",
         "@numerical_methods//matrix_solvers:utilities",
