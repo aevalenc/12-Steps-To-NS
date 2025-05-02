@@ -90,7 +90,12 @@ class SpatialVariable
     void SetDirichletBoundaryCondition(const double value, const std::int32_t boundary_index);
 
     void SetStiffnessMatrix(nm::matrix::Matrix<double> K);
+    void SetDampingMatrix(nm::matrix::Matrix<double> C);
     void SetForceVector(std::vector<double> f);
+
+    nm::matrix::Matrix<double> GetStiffnessMatrix() const { return K_; }
+    nm::matrix::Matrix<double> GetDampingMatrix() const { return C_; }
+    std::vector<double> GetForceVector() const { return f_; };
 
     void SetMatrixSolver(const MatrixSolverEnum matrix_solver);
 
@@ -101,6 +106,7 @@ class SpatialVariable
     FiniteDifferenceSchema discretization_schema_{};
     std::vector<double> discretized_variable_{};
     nm::matrix::Matrix<double> K_{};
+    nm::matrix::Matrix<double> C_{};
     std::vector<double> f_{};
     MatrixSolverEnum matrix_solver_{MatrixSolverEnum::kInvalid};
     geometry::Grid spatial_grid_{};
