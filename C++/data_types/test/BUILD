@@ -1,4 +1,6 @@
-load("@rules_cc//cc:defs.bzl", "cc_test")
+"""
+BUILD file for C++ data types tests.
+"""
 
 cc_test(
     name = "grid_tests",

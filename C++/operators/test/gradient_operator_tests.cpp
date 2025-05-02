@@ -1,14 +1,10 @@
-// Alejandro Valencia
-// CFD BU Online Course
-// Update: 20 November, 2021
-
 /*
- * ***********************************************************************
- * This program uses a finite difference method to solve the 1D
- * diffusion equation as Step 3 of 12 of the online BU CFD course taught
- * by Lorena Barba
+ * @file gradient_operator_tests.cpp
+ * @brief Unit tests for the GradientOperator class.
+ * @details This file contains unit tests for the GradientOperator class, which is part of the C++ CFD library.
  *
- * ***********************************************************************
+ * @date May 2, 2025
+ * @author Alejandro Valencia
  */
 
 #include "C++/data_types/grid.h"
@@ -42,7 +38,7 @@ class BaseClassFixture : public testing::Test
     operators::GradientOperator nabla_{};
 
   public:
-    std::uint64_t number_of_grid_nodes_{5};
+    std::int32_t number_of_grid_nodes_{5};
     double initial_point_x_value_{0.0};
     double end_point_x_value_{1.0};
     double left_boundary_condition_{200.0};

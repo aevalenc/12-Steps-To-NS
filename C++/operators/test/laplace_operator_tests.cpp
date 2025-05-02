@@ -1,14 +1,10 @@
-// Alejandro Valencia
-// CFD BU Online Course
-// Update: 20 November, 2021
-
 /*
- * ***********************************************************************
- * This program uses a finite difference method to solve the 1D
- * diffusion equation as Step 3 of 12 of the online BU CFD course taught
- * by Lorena Barba
+ * @file laplace_operator_tests.cpp
+ * @brief Unit tests for the LaplaceOperator class.
+ * @details This file contains unit tests for the LaplaceOperator class, which is part of the C++ CFD library.
  *
- * ***********************************************************************
+ * @date May 2, 2025
+ * @author Alejandro Valencia
  */
 
 #include "C++/data_types/grid.h"

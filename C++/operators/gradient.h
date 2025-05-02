@@ -29,6 +29,11 @@ class GradientOperator
     GradientOperator(){};
     explicit GradientOperator(const double wave_speed);
     ~GradientOperator() = default;
+
+    GradientOperator(const GradientOperator& other)
+        : u_(other.u_), dimension_(other.dimension_), matrix_size_(other.matrix_size_), wave_speed_(other.wave_speed_)
+    {
+    }
     GradientOperator& operator=(const GradientOperator& other)
     {
         if (this != &other)
@@ -40,6 +45,7 @@ class GradientOperator
         }
         return *this;
     }
+
     GradientOperator& operator=(GradientOperator&& other) noexcept
     {
         if (this != &other)
@@ -55,10 +61,6 @@ class GradientOperator
             other.wave_speed_ = 0.0;
         }
         return *this;
-    }
-    GradientOperator(const GradientOperator& other)
-        : u_(other.u_), dimension_(other.dimension_), matrix_size_(other.matrix_size_), wave_speed_(other.wave_speed_)
-    {
     }
     GradientOperator(GradientOperator&& other) noexcept
         : u_(other.u_), dimension_(other.dimension_), matrix_size_(other.matrix_size_), wave_speed_(other.wave_speed_)

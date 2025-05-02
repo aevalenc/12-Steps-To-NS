@@ -1,4 +1,6 @@
-load("@rules_cc//cc:defs.bzl", "cc_library")
+"""
+BUILD file for the C++ data types library.
+"""
 
 cc_library(
     name = "grid",

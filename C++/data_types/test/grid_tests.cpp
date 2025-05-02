@@ -1,13 +1,13 @@
-// Alejandro Valencia
-// CFD BU Online Course Step 1: 1D conduction
-// Update: 20 November, 2021
-
-/************************************************************************
- * This program uses a finite difference method to solve the 1D
- ** diffusion equation as Step 3 of 12 of the online BU CFD course * taught by
- *Lorena Barba
- **
- ************************************************************************/
+/*
+ * @file grid_tests.cpp
+ * @brief Unit tests for the Grid class.
+ * @details This file contains unit tests for the Grid class, which is part of the C++ CFD library.
+ *          The tests cover the basic functionality of the Grid class, including element creation
+ *          and display.
+ *
+ * @date May 2, 2025
+ * @author Alejandro Valencia
+ */
 
 #include "C++/data_types/grid.h"
 #include <gtest/gtest.h>
