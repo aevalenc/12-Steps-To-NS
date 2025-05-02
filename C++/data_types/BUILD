@@ -10,6 +10,14 @@ cc_library(
 )
 
 cc_library(
+    name = "time_variable",
+    srcs = ["time_variable.cpp"],
+    hdrs = ["time_variable.h"],
+    visibility = ["//C++:__subpackages__"],
+    deps = [":spatial_variable"],
+)
+
+cc_library(
     name = "discretization_lib",
     hdrs = [
         "discretization_methods.h",
@@ -28,12 +36,4 @@ cc_library(
         "@numerical_methods//matrix_solvers:utilities",
         "@numerical_methods//matrix_solvers/iterative_solvers:jacobi_method",
     ],
-)
-
-cc_library(
-    name = "time_variable",
-    srcs = ["time_variable.cpp"],
-    hdrs = ["time_variable.h"],
-    visibility = ["//C++:__subpackages__"],
-    deps = [":spatial_variable"],
 )

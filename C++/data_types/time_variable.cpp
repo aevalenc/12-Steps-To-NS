@@ -15,9 +15,9 @@ namespace cfd
 {
 
 TimeVariable::TimeVariable(const SpatialVariable& u)
-    : time_discretization_method_(TimeDiscretizationMethod::kInvalid), u_(u)
+    : time_discretization_method_(TimeDiscretizationMethod::kInvalid), ux_(u)
 {
-    u_current_ = u_.GetDiscretizedVariable();
+    u_current_ = ux_.GetDiscretizedVariable();
     u_previous_ = u_current_;
 }
 
