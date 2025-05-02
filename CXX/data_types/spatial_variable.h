@@ -12,8 +12,8 @@
 #include "external/numerical_methods/matrix_solvers/utilities.h"
 #include <vector>
 
-#ifndef C___DATA_TYPES_SPATIAL_VARIABLE_H
-#define C___DATA_TYPES_SPATIAL_VARIABLE_H
+#ifndef CXX_DATA_TYPES_SPATIAL_VARIABLE_H
+#define CXX_DATA_TYPES_SPATIAL_VARIABLE_H
 
 namespace cfd
 {
@@ -114,4 +114,4 @@ class SpatialVariable
 
 }  // namespace cfd
 
-#endif  // C___DATA_TYPES_SPATIAL_VARIABLE_H
+#endif  // CXX_DATA_TYPES_SPATIAL_VARIABLE_H

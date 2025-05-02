@@ -6,8 +6,8 @@
 
 #include "CXX/data_types/grid.h"
 
-#ifndef C___UTILITIES_GRID_GENERATOR_H
-#define C___UTILITIES_GRID_GENERATOR_H
+#ifndef CXX_UTILITIES_GRID_GENERATOR_H
+#define CXX_UTILITIES_GRID_GENERATOR_H
 
 namespace cfd
 {
@@ -29,4 +29,4 @@ class GridGenerator
 
 }  // namespace cfd
 
-#endif  // C___UTILITIES_GRID_GENERATOR_H
+#endif  // CXX_UTILITIES_GRID_GENERATOR_H

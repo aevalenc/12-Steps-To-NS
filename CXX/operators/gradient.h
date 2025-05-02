@@ -9,8 +9,8 @@
 #include "external/numerical_methods/matrix_solvers/utilities.h"
 #include <cstdint>
 
-#ifndef C___OPERATORS_GRADIENT_H
-#define C___OPERATORS_GRADIENT_H
+#ifndef CXX_OPERATORS_GRADIENT_H
+#define CXX_OPERATORS_GRADIENT_H
 
 namespace cfd
 {
@@ -82,4 +82,4 @@ class GradientOperator
 
 }  // namespace cfd
 
-#endif  // C___OPERATORS_GRADIENT_H
+#endif  // CXX_OPERATORS_GRADIENT_H

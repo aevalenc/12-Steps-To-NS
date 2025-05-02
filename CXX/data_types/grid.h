@@ -11,8 +11,8 @@
 #include <ostream>
 #include <vector>
 
-#ifndef C___DATA_TYPES_GRID_H
-#define C___DATA_TYPES_GRID_H
+#ifndef CXX_DATA_TYPES_GRID_H
+#define CXX_DATA_TYPES_GRID_H
 
 namespace cfd
 {
@@ -120,4 +120,4 @@ class Grid
 
 }  // namespace cfd
 
-#endif  // C___DATA_TYPES_GRID_H
+#endif  // CXX_DATA_TYPES_GRID_H

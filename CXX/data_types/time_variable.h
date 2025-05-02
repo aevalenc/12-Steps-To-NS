@@ -9,8 +9,8 @@
 #include "CXX/data_types/spatial_variable.h"
 #include <vector>
 
-#ifndef C___DATA_TYPES_TIME_VARIABLE_H
-#define C___DATA_TYPES_TIME_VARIABLE_H
+#ifndef CXX_DATA_TYPES_TIME_VARIABLE_H
+#define CXX_DATA_TYPES_TIME_VARIABLE_H
 
 namespace cfd
 {
@@ -64,4 +64,4 @@ class TimeVariable
 
 }  // namespace cfd
 
-#endif  // C___DATA_TYPES_TIME_VARIABLE_H
+#endif  // CXX_DATA_TYPES_TIME_VARIABLE_H

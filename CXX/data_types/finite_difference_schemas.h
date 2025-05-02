@@ -7,8 +7,8 @@
 #include <cstdint>
 #include <string>
 
-#ifndef C___DATA_TYPES_FINITE_DIFFERENCE_SCHEMAS_H
-#define C___DATA_TYPES_FINITE_DIFFERENCE_SCHEMAS_H
+#ifndef CXX_DATA_TYPES_FINITE_DIFFERENCE_SCHEMAS_H
+#define CXX_DATA_TYPES_FINITE_DIFFERENCE_SCHEMAS_H
 
 namespace cfd
 {
@@ -55,4 +55,4 @@ inline std::string FiniteDifferenceSchemaToString(const FiniteDifferenceSchema m
 
 }  // namespace cfd
 
-#endif  // C___DATA_TYPES_FINITE_DIFFERENCE_SCHEMAS_H
+#endif  // CXX_DATA_TYPES_FINITE_DIFFERENCE_SCHEMAS_H

@@ -7,8 +7,8 @@
 #include <cstdint>
 #include <string>
 
-#ifndef C___DATA_TYPES_DISCRETIZATION_METHODS_H
-#define C___DATA_TYPES_DISCRETIZATION_METHODS_H
+#ifndef CXX_DATA_TYPES_DISCRETIZATION_METHODS_H
+#define CXX_DATA_TYPES_DISCRETIZATION_METHODS_H
 
 namespace cfd
 {
@@ -55,4 +55,4 @@ inline std::string SpatialDiscretizationMethodToString(const SpatialDiscretizati
 
 }  // namespace cfd
 
-#endif  // C___DATA_TYPES_DISCRETIZATION_METHODS_H
+#endif  // CXX_DATA_TYPES_DISCRETIZATION_METHODS_H
