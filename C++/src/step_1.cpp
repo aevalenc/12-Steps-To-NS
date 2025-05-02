@@ -19,11 +19,27 @@ int main(int argc, char* argv[])
     // Setup grid
     const auto grid_inputs = input_data["grid"];
     cfd::geometry::GridGenerator grid_generator{};
+    cfd::geometry::Grid mesh{};
+
     if (!grid_inputs["import"])
     {
-        grid_generator.Create1DLinearGrid(grid_inputs["size"], grid_inputs["x_start"], grid_inputs["x_end"]);
+        if (grid_inputs["size"].is_null() || grid_inputs["x_start"].is_null() || grid_inputs["x_end"].is_null())
+        {
+            std::cerr << "Error: Missing grid parameters\n";
+            return 1;
+        }
+        mesh = grid_generator.Create1DLinearGrid(grid_inputs["size"], grid_inputs["x_start"], grid_inputs["x_end"]);
     }
-    const auto mesh = grid_generator.GetGrid().GetElements();
+
+    if (mesh.GetElements().empty())
+    {
+        std::cerr << "Error: No elements in the grid\n";
+        return 1;
+    }
+    for (const auto& element : mesh.GetElements())
+    {
+        std::cout << element << std::endl;
+    }
 
     std::cout << "Grid generated successfully\n";
 
@@ -32,7 +48,7 @@ int main(int argc, char* argv[])
     cfd::SpatialVariable u_x{};
 
     u_x.SetSpatialDiscretizationMethod(spatial_inputs["discretization_method"]);
-    u_x.SetGrid(grid_generator.GetGrid());
+    u_x.SetGrid(mesh);
     std::cout << "Spatial variable initialized with grid\n";
 
     // Initialize time variable

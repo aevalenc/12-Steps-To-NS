@@ -50,6 +50,7 @@ class TimeVariable
     void SetEndTime(const double& end_time) { end_time_ = end_time; };
     void SetTimeStep(const double& delta_t) { delta_t_ = delta_t; };
     void SetInitialCondition(const std::vector<double>& u_initial) { u_previous_ = u_initial; };
+    void SetDirichletBoundaryCondition(const std::vector<double>& u_boundary);
     void Step(const std::vector<double>& wave_speeds);
 
   private:
@@ -59,7 +60,7 @@ class TimeVariable
     double start_time_{};
     double end_time_{};
     double delta_t_{};
-    SpatialVariable u_{};
+    SpatialVariable ux_{};
 };
 
 }  // namespace cfd
