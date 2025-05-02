@@ -8,7 +8,7 @@ cc_library(
     hdrs = ["laplace.h"],
     visibility = ["//C++:__subpackages__"],
     deps = [
-        "//C++/data_types:spatial_variable",
+        "//CXX/data_types:spatial_variable",
         "@numerical_methods//matrix_solvers:utilities",
     ],
 )
@@ -19,7 +19,7 @@ cc_library(
     hdrs = ["gradient.h"],
     visibility = ["//C++:__subpackages__"],
     deps = [
-        "//C++/data_types:spatial_variable",
+        "//CXX/data_types:spatial_variable",
         "@numerical_methods//matrix_solvers:utilities",
     ],
 )

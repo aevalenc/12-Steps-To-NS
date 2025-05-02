@@ -7,10 +7,10 @@
  * @author Alejandro Valencia
  */
 
-#include "C++/data_types/grid.h"
-#include "C++/data_types/spatial_variable.h"
-#include "C++/operators/laplace.h"
-#include "C++/utilities/grid_generator.h"
+#include "CXX/data_types/grid.h"
+#include "CXX/data_types/spatial_variable.h"
+#include "CXX/operators/laplace.h"
+#include "CXX/utilities/grid_generator.h"
 #include <gtest/gtest.h>
 
 namespace cfd

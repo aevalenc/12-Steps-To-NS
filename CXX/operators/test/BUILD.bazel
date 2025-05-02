@@ -6,10 +6,10 @@ cc_test(
     name = "laplace_operator_tests",
     srcs = ["laplace_operator_tests.cpp"],
     deps = [
-        "//C++/data_types:grid",
-        "//C++/data_types:spatial_variable",
-        "//C++/operators:laplace",
-        "//C++/utilities:grid_generator",
+        "//CXX/data_types:grid",
+        "//CXX/data_types:spatial_variable",
+        "//CXX/operators:laplace",
+        "//CXX/utilities:grid_generator",
         "@com_google_googletest//:gtest_main",
     ],
 )
@@ -18,10 +18,10 @@ cc_test(
     name = "gradient_operator_tests",
     srcs = ["gradient_operator_tests.cpp"],
     deps = [
-        "//C++/data_types:grid",
-        "//C++/data_types:spatial_variable",
-        "//C++/operators:gradient",
-        "//C++/utilities:grid_generator",
+        "//CXX/data_types:grid",
+        "//CXX/data_types:spatial_variable",
+        "//CXX/operators:gradient",
+        "//CXX/utilities:grid_generator",
         "@com_google_googletest//:gtest_main",
     ],
 )

@@ -8,7 +8,7 @@
  * @author Alejandro Valencia
  */
 
-#include "C++/data_types/spatial_variable.h"
+#include "CXX/data_types/spatial_variable.h"
 #include <gtest/gtest.h>
 
 namespace cfd

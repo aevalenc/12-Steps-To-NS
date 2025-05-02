@@ -4,7 +4,7 @@
 /// Update: 16 October, 2022
 ///
 
-#include "C++/data_types/grid.h"
+#include "CXX/data_types/grid.h"
 
 #ifndef C___UTILITIES_GRID_GENERATOR_H
 #define C___UTILITIES_GRID_GENERATOR_H

@@ -9,7 +9,7 @@
  * @author Alejandro Valencia
  */
 
-#include "C++/data_types/grid.h"
+#include "CXX/data_types/grid.h"
 #include <gtest/gtest.h>
 
 namespace cfd

@@ -7,7 +7,7 @@
  * SpatialVariable
  */
 
-#include "C++/data_types/spatial_variable.h"
+#include "CXX/data_types/spatial_variable.h"
 #include "external/numerical_methods/matrix_solvers/iterative_solvers/jacobi.h"
 #include <algorithm>
 #include <cassert>

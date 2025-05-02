@@ -6,7 +6,7 @@
  *
  */
 
-#include "C++/data_types/spatial_variable.h"
+#include "CXX/data_types/spatial_variable.h"
 #include <vector>
 
 #ifndef C___DATA_TYPES_TIME_VARIABLE_H

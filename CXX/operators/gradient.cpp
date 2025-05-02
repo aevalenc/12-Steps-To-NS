@@ -4,7 +4,7 @@
  * Update: May 1, 2025
  */
 
-#include "C++/operators/gradient.h"
+#include "CXX/operators/gradient.h"
 
 namespace cfd
 {

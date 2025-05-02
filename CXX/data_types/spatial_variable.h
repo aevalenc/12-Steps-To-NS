@@ -6,9 +6,9 @@
  *
  */
 
-#include "C++/data_types/discretization_methods.h"
-#include "C++/data_types/finite_difference_schemas.h"
-#include "C++/data_types/grid.h"
+#include "CXX/data_types/discretization_methods.h"
+#include "CXX/data_types/finite_difference_schemas.h"
+#include "CXX/data_types/grid.h"
 #include "external/numerical_methods/matrix_solvers/utilities.h"
 #include <vector>
 

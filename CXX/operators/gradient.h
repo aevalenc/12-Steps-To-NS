@@ -4,8 +4,8 @@
  * Update: April 13, 2024
  */
 
-#include "C++/data_types/grid.h"
-#include "C++/data_types/spatial_variable.h"
+#include "CXX/data_types/grid.h"
+#include "CXX/data_types/spatial_variable.h"
 #include "external/numerical_methods/matrix_solvers/utilities.h"
 #include <cstdint>
 

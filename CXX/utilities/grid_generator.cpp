@@ -4,8 +4,8 @@
 /// Update: 16 October, 2022
 ///
 
-#include "C++/utilities/grid_generator.h"
-#include "C++/data_types/grid.h"
+#include "CXX/utilities/grid_generator.h"
+#include "CXX/data_types/grid.h"
 
 namespace cfd
 {

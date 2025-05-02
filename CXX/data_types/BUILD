@@ -24,7 +24,7 @@ cc_library(
     visibility = ["//C++:__subpackages__"],
     deps = [
         ":discretization_lib",
-        "//C++/data_types:grid",
+        "//CXX/data_types:grid",
         "@numerical_methods//matrix_solvers:utilities",
         "@numerical_methods//matrix_solvers/iterative_solvers:jacobi_method",
     ],

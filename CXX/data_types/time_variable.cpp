@@ -7,7 +7,7 @@
  * TimeVariable
  */
 
-#include "C++/data_types/time_variable.h"
+#include "CXX/data_types/time_variable.h"
 #include <cassert>
 #include <iterator>
 

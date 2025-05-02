@@ -4,7 +4,7 @@
 /// Update: 16 October, 2022
 ///
 
-#include "C++/data_types/grid.h"
+#include "CXX/data_types/grid.h"
 
 namespace cfd
 {

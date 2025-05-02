@@ -4,7 +4,7 @@
  * Update: April 13, 2024
  */
 
-#include "C++/operators/laplace.h"
+#include "CXX/operators/laplace.h"
 #include <algorithm>
 #include <vector>
 

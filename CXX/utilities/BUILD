@@ -3,5 +3,5 @@ cc_library(
     srcs = ["grid_generator.cpp"],
     hdrs = ["grid_generator.h"],
     visibility = ["//C++:__subpackages__"],
-    deps = ["//C++/data_types:grid"],
+    deps = ["//CXX/data_types:grid"],
 )
