@@ -6,6 +6,8 @@
  *
  */
 
+#include "C++/data_types/discretization_methods.h"
+#include "C++/data_types/finite_difference_schemas.h"
 #include "C++/data_types/grid.h"
 #include "external/numerical_methods/matrix_solvers/utilities.h"
 #include <vector>
@@ -16,14 +18,6 @@
 namespace cfd
 {
 
-enum class SpatialDiscretizationMethod
-{
-    kFiniteDifferenceMethod,
-    kFiniteVolumeMethod,
-    kFiniteElementMethod,
-    kInvalid,
-};
-
 // Should be in Numerical Methods
 enum class MatrixSolverEnum : std::int32_t
 {
@@ -32,6 +26,38 @@ enum class MatrixSolverEnum : std::int32_t
     kLUSolve = 2,
     kInvalid = 255,
 };
+
+inline MatrixSolverEnum MatrixSolverEnumFromString(const std::string& str)
+{
+    if (str == "Jacobi")
+    {
+        return MatrixSolverEnum::kJacobi;
+    }
+    if (str == "GaussSeidel")
+    {
+        return MatrixSolverEnum::kGaussSeidel;
+    }
+    if (str == "LUSolve")
+    {
+        return MatrixSolverEnum::kLUSolve;
+    }
+    return MatrixSolverEnum::kInvalid;
+};
+
+inline std::string MatrixSolverEnumToString(const MatrixSolverEnum method)
+{
+    switch (method)
+    {
+        case MatrixSolverEnum::kJacobi:
+            return "Jacobi";
+        case MatrixSolverEnum::kGaussSeidel:
+            return "GaussSeidel";
+        case MatrixSolverEnum::kLUSolve:
+            return "LUSolve";
+        default:
+            return "Invalid";
+    }
+}
 
 class SpatialVariable
 {
@@ -42,15 +68,19 @@ class SpatialVariable
     SpatialVariable(const SpatialVariable& other)
         : spatial_discretization_method_(other.spatial_discretization_method_),
           discretized_variable_(other.discretized_variable_){};
-    SpatialVariable(SpatialVariable&& other)
+    SpatialVariable(SpatialVariable&& other) noexcept
         : spatial_discretization_method_(other.spatial_discretization_method_),
           discretized_variable_(other.discretized_variable_){};
     SpatialVariable& operator=(const SpatialVariable& other) { return *this = SpatialVariable(other); }
-    SpatialVariable& operator=(SpatialVariable&&) { return *this; }
+    SpatialVariable& operator=(SpatialVariable&&) noexcept { return *this; }
 
   public:
     void SetSpatialDiscretizationMethod(SpatialDiscretizationMethod spatial_discretization_method);
     SpatialDiscretizationMethod GetSpatialDiscretizationMethod() const;
+
+    void SetDiscretizationSchema(FiniteDifferenceSchema discretization_schema);
+    FiniteDifferenceSchema GetDiscretizationSchema() const { return discretization_schema_; };
+
     std::vector<double>& GetDiscretizedVariable() { return discretized_variable_; };
 
     void SetGrid(const cfd::geometry::Grid& grid);
@@ -60,7 +90,12 @@ class SpatialVariable
     void SetDirichletBoundaryCondition(const double value, const std::int32_t boundary_index);
 
     void SetStiffnessMatrix(nm::matrix::Matrix<double> K);
+    void SetDampingMatrix(nm::matrix::Matrix<double> C);
     void SetForceVector(std::vector<double> f);
+
+    nm::matrix::Matrix<double> GetStiffnessMatrix() const { return K_; }
+    nm::matrix::Matrix<double> GetDampingMatrix() const { return C_; }
+    std::vector<double> GetForceVector() const { return f_; };
 
     void SetMatrixSolver(const MatrixSolverEnum matrix_solver);
 
@@ -68,8 +103,10 @@ class SpatialVariable
 
   private:
     SpatialDiscretizationMethod spatial_discretization_method_{};
+    FiniteDifferenceSchema discretization_schema_{};
     std::vector<double> discretized_variable_{};
     nm::matrix::Matrix<double> K_{};
+    nm::matrix::Matrix<double> C_{};
     std::vector<double> f_{};
     MatrixSolverEnum matrix_solver_{MatrixSolverEnum::kInvalid};
     geometry::Grid spatial_grid_{};

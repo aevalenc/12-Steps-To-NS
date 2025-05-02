@@ -1,7 +1,7 @@
 /*
- * @file laplace_operator_tests.cpp
- * @brief Unit tests for the LaplaceOperator class.
- * @details This file contains unit tests for the LaplaceOperator class, which is part of the C++ CFD library.
+ * @file gradient_operator_tests.cpp
+ * @brief Unit tests for the GradientOperator class.
+ * @details This file contains unit tests for the GradientOperator class, which is part of the C++ CFD library.
  *
  * @date May 2, 2025
  * @author Alejandro Valencia
@@ -9,7 +9,7 @@
 
 #include "C++/data_types/grid.h"
 #include "C++/data_types/spatial_variable.h"
-#include "C++/operators/laplace.h"
+#include "C++/operators/gradient.h"
 #include "C++/utilities/grid_generator.h"
 #include <gtest/gtest.h>
 
@@ -27,17 +27,18 @@ class BaseClassFixture : public testing::Test
         const geometry::Grid grid_ =
             grid_generator_.Create1DLinearGrid(number_of_grid_nodes_, initial_point_x_value_, end_point_x_value_);
         u_.SetGrid(grid_);
-        operators::LaplaceOperator delta(u_);
-        delta_ = std::move(delta);
+        const double wave_speed = 1.0;
+        operators::GradientOperator nabla(wave_speed);
+        nabla_ = nabla;
     }
 
   protected:
     SpatialVariable u_{};
     geometry::GridGenerator grid_generator_{};
-    operators::LaplaceOperator delta_;
+    operators::GradientOperator nabla_{};
 
   public:
-    std::uint64_t number_of_grid_nodes_{5};
+    std::int32_t number_of_grid_nodes_{5};
     double initial_point_x_value_{0.0};
     double end_point_x_value_{1.0};
     double left_boundary_condition_{200.0};
@@ -47,9 +48,16 @@ class BaseClassFixture : public testing::Test
 
 TEST_F(BaseClassFixture, GivenValidSetup_ExpectCorrectMatrixGeneration)
 {
-    const auto result = delta_.GenerateMatrix();
-    nm::matrix::PrintMatrix(result);
-    EXPECT_NEAR(result.at(0).at(0), 2.0, tolerance_);
+    // Given
+    const auto delta_x = (end_point_x_value_ - initial_point_x_value_) / (number_of_grid_nodes_);
+
+    // Call
+    nabla_.GenerateMatrixForSpatialVariable(u_);
+    const auto damping_matrix = u_.GetDampingMatrix();
+
+    // Expect
+    nm::matrix::PrintMatrix(damping_matrix);
+    EXPECT_NEAR(damping_matrix.at(0).at(0), 1.0 / delta_x, tolerance_);
 }
 
 }  // namespace

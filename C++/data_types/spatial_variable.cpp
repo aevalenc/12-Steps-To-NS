@@ -66,6 +66,12 @@ void SpatialVariable::SetStiffnessMatrix(nm::matrix::Matrix<double> K)
 {
     K_ = K;
 }
+
+void SpatialVariable::SetDampingMatrix(nm::matrix::Matrix<double> C)
+{
+    C_ = C;
+}
+
 void SpatialVariable::SetForceVector(std::vector<double> f)
 {
     f_ = f;

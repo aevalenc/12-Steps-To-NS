@@ -8,6 +8,7 @@
 
 #include <cstdint>
 #include <optional>
+#include <ostream>
 #include <vector>
 
 #ifndef C___DATA_TYPES_GRID_H
@@ -58,16 +59,39 @@ class Element
   public:
     Element(){};
     Element(ElementEntity nodes) : nodes_(nodes){};
+    friend std::ostream& operator<<(std::ostream& os, const Element& element)
+    {
+        os << "Element: [";
+        for (size_t i = 0; i < element.nodes_.size(); ++i)
+        {
+            const auto& node = element.nodes_[i].GetValues();
+            os << "{";
+            for (size_t j = 0; j < node.size(); ++j)
+            {
+                if (node[j].has_value())
+                    os << node[j].value();
+                else
+                    os << "null";
+                if (j < node.size() - 1)
+                    os << ", ";
+            }
+            os << "}";
+            if (i < element.nodes_.size() - 1)
+                os << ", ";
+        }
+        os << "]";
+        return os;
+    }
 
     ElementEntity GetElement() const { return nodes_; };
-    std::uint8_t GetDimension() const { return dimension_; };
+    std::int8_t GetDimension() const { return dimension_; };
     FiniteElementOrder GetOrder() const { return order_; };
     const bool IsOnBoundary() const;
     void SetBoundaryBoolean(const bool is_on_boundary);
 
   private:
     ElementEntity nodes_{};
-    std::uint8_t dimension_{};
+    std::int8_t dimension_{};
     FiniteElementOrder order_{};
     bool is_on_boundary_{false};
 };
@@ -79,9 +103,9 @@ class Grid
     Grid(std::vector<Element> elements) : elements_(elements){};
 
   public:
-    std::uint8_t GetDimension() const { return dimension_; }
-    void SetDimension(const std::uint8_t& dimension) { dimension_ = dimension; }
-    std::uint64_t GetSize() const;
+    std::int8_t GetDimension() const { return dimension_; }
+    void SetDimension(const std::int8_t& dimension) { dimension_ = dimension; }
+    std::int32_t GetSize() const;
 
     std::vector<Element> GetElementsMutable() const { return elements_; }
     const std::vector<Element>& GetElements() const { return elements_; }
@@ -89,7 +113,7 @@ class Grid
 
   private:
     std::vector<Element> elements_{};
-    std::uint8_t dimension_{};
+    std::int8_t dimension_{};
 };
 
 }  // namespace geometry
