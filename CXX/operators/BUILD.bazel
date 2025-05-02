@@ -1,0 +1,25 @@
+"""
+This file contains the Bazel build rules for the various cfd operators.
+"""
+
+cc_library(
+    name = "laplace",
+    srcs = ["laplace.cpp"],
+    hdrs = ["laplace.h"],
+    visibility = ["//CXX:__subpackages__"],
+    deps = [
+        "//CXX/data_types:spatial_variable",
+        "@numerical_methods//matrix_solvers:utilities",
+    ],
+)
+
+cc_library(
+    name = "gradient",
+    srcs = ["gradient.cpp"],
+    hdrs = ["gradient.h"],
+    visibility = ["//CXX:__subpackages__"],
+    deps = [
+        "//CXX/data_types:spatial_variable",
+        "@numerical_methods//matrix_solvers:utilities",
+    ],
+)
